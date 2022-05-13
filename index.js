@@ -306,7 +306,7 @@ emojiSchema = new mongoose.Schema({
 
 const Emoji = mongoose.model("emoji",emojiSchema);
 
-app.get('emoji/:emotion',(req,res)=>{
+app.get('/emoji/:emotion',(req,res)=>{
   const requestedemotion = req.params.emotion;
     Emoji.find({'emotion':requestedemotion.toLowerCase()},(err,emoji)=>{
         if(err){
@@ -317,7 +317,7 @@ app.get('emoji/:emotion',(req,res)=>{
     })
 })
 
-app.post('emoji/:emotion',(req,res)=>{
+app.post('/emoji/:emotion',(req,res)=>{
    const apiKey = req.query.apiKey;
     if(apiKey == 'codepannustudent'){
             b = req.body
@@ -344,7 +344,7 @@ app.post('emoji/:emotion',(req,res)=>{
 })
 
 
-app.delete('emoji/:id',(req,res)=>{
+app.delete('/emoji/:id',(req,res)=>{
     apiKey = req.query.apiKey
     if(apiKey == 'codepannustudent'){
         Emoji.deleteOne({ _id: req.params.id },(err,result)=>{
